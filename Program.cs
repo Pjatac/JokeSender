@@ -31,14 +31,30 @@ namespace JokeSenderConsole
 					try
 					{
 						var checkValidity = http.GetAsync(DS + emailToSend).Result;
-						if (checkValidity != null && checkValidity.StatusCode == HttpStatusCode.OK)
+						if (checkValidity.StatusCode == HttpStatusCode.OK)
 						{
 							var res = JsonSerializer.Deserialize<DisifyResponse>(checkValidity.Content.ReadAsStringAsync().Result);
 							if (res.format == true)
 							//Email validity submitted
 							{
-								string joke = GetJoke().Result;
-								SendEmail(emailToSend, joke);
+								try
+								{
+									var jokeResponse = GetJoke().Result;
+									string joke = jokeResponse.Content.ReadAsStringAsync().Result;
+									if (jokeResponse.StatusCode == HttpStatusCode.OK)
+									{
+										SendEmail(emailToSend, joke);
+									}
+									else
+									{
+										Console.WriteLine($"Something went wrong on getting joke...! {joke}");
+									}
+
+								}
+								catch (Exception ex)
+								{
+									Console.WriteLine($"Joke server error: {ex.Message}");
+								}
 							}
 							else
 							{
@@ -46,11 +62,11 @@ namespace JokeSenderConsole
 							}
 						}
 						else
-							Console.WriteLine("Something went wrong...!");
+							Console.WriteLine($"Something went wrong on email validation...!");
 					}
 					catch (Exception ex)
 					{
-						Console.WriteLine(ex.Message);
+						Console.WriteLine($"Validation server error: {ex.Message}");
 					}
 				}
 				else
@@ -58,21 +74,20 @@ namespace JokeSenderConsole
 					exit = true;
 				}
 			}
-			Console.WriteLine("Good bay!");
+			Console.WriteLine($"Good bay!");
 			Console.ReadKey();
 		}
 
-		static async Task<string> GetJoke()
+		static async Task<HttpResponseMessage> GetJoke()
 		{
-			var res = await http.SendAsync(new HttpRequestMessage
+			return await http.SendAsync(new HttpRequestMessage
 			{
 				Method = HttpMethod.Get,
 				RequestUri = new Uri(IJ),
 				Headers = {
 					{ HttpRequestHeader.Accept.ToString(), "text/plain" }
 			}
-			});
-			return await res.Content.ReadAsStringAsync();
+			});;
 		}
 
 		static void SendEmail(string recipient, string joke)
