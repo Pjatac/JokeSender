@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JokeSenderConsole", "JokeSenderConsole.csproj", "{FD11C189-03DB-4926-AD95-7310296D6AB8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JokeSender.Domain", "JokeSender.Domain\JokeSender.Domain.csproj", "{206DE1B9-3FB8-40F8-9BA7-777FB1594693}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JokeSender.ConsoleApp", "JokeSender.ConsoleApp\JokeSender.ConsoleApp.csproj", "{92AFFB29-4AAC-4265-86BF-E006E15BEBA2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FD11C189-03DB-4926-AD95-7310296D6AB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FD11C189-03DB-4926-AD95-7310296D6AB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FD11C189-03DB-4926-AD95-7310296D6AB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FD11C189-03DB-4926-AD95-7310296D6AB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{206DE1B9-3FB8-40F8-9BA7-777FB1594693}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{206DE1B9-3FB8-40F8-9BA7-777FB1594693}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{206DE1B9-3FB8-40F8-9BA7-777FB1594693}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{206DE1B9-3FB8-40F8-9BA7-777FB1594693}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92AFFB29-4AAC-4265-86BF-E006E15BEBA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92AFFB29-4AAC-4265-86BF-E006E15BEBA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92AFFB29-4AAC-4265-86BF-E006E15BEBA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92AFFB29-4AAC-4265-86BF-E006E15BEBA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
